@@ -16,4 +16,6 @@ public interface ShowDAO {
 
     Long deleteShow(Long showId);
 
+    Show getShow(Long showId);
+
 }

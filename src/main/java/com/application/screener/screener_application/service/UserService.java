@@ -1,5 +1,6 @@
 package com.application.screener.screener_application.service;
 
+import com.application.screener.screener_application.models.Subscriber;
 import com.application.screener.screener_application.models.User;
 
 import java.util.List;

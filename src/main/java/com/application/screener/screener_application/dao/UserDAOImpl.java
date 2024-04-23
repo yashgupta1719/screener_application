@@ -1,5 +1,6 @@
 package com.application.screener.screener_application.dao;
 
+import com.application.screener.screener_application.models.Subscriber;
 import com.application.screener.screener_application.models.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -19,8 +20,7 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public List<User> getAllUsers() {
-        Session currentSession = entityManager.unwrap(Session.class);
-        TypedQuery<User> query = currentSession.createQuery("select u from User u left join fetch u.shows sh", User.class);
+        TypedQuery<User> query = entityManager.createQuery("select u from User u left join fetch u.shows sh", User.class);
         return query.getResultList();
     }
 

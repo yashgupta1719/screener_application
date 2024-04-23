@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "shows")
@@ -24,6 +25,18 @@ public class Show {
 
     @Column(name = "user_id")
     private Long userId;
+
+    public Theatre getTheatre() {
+        return theatre;
+    }
+
+    public void setTheatre(Theatre theatre) {
+        this.theatre = theatre;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "theatre_id")
+    private Theatre theatre;
 
     public Long getUserId() {
         return userId;

@@ -51,4 +51,9 @@ public class ShowDAOImpl implements ShowDAO{
     public Long deleteShow(Long showId) {
         return null;
     }
+
+    public Show getShow(Long showId){
+        Show show = entityManager.find(Show.class, showId);
+        return show;
+    }
 }

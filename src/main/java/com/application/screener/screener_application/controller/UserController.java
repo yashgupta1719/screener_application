@@ -1,5 +1,6 @@
 package com.application.screener.screener_application.controller;
 
+import com.application.screener.screener_application.models.Subscriber;
 import com.application.screener.screener_application.models.User;
 import com.application.screener.screener_application.models.UsersReponse;
 import com.application.screener.screener_application.service.CommonService;
