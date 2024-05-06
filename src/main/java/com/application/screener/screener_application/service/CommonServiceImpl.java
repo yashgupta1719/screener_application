@@ -1,5 +1,6 @@
 package com.application.screener.screener_application.service;
 
+import com.application.screener.screener_application.dao.NotificationDAO;
 import com.application.screener.screener_application.dao.ShowDAO;
 import com.application.screener.screener_application.dao.UserDAO;
 import com.application.screener.screener_application.models.*;
@@ -29,6 +30,9 @@ public class CommonServiceImpl implements CommonService{
     private ShowDAO showDAO;
 
     @Autowired
+    private NotificationDAO notificationDAO;
+
+    @Autowired
     private QueueMessagingTemplate queueMessagingTemplate;
 
     @Value("${aws.queueName}")
@@ -42,7 +46,9 @@ public class CommonServiceImpl implements CommonService{
         user.getShows().add(showObj);
         userDAO.update(user);
 
+        Long notification_obj_id = notificationDAO.getNextIDValueFromSEQUENCE();
         NotificationObject notificationObject = new NotificationObject();
+        notificationObject.setId(notification_obj_id);
         notificationObject.setEntity_type_id(1);
         notificationObject.setEntity_id(show.getShowId());
         notificationObject.setDate(show.getShowDate());

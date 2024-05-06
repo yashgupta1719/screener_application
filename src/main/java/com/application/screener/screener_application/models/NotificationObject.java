@@ -1,6 +1,8 @@
 package com.application.screener.screener_application.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.sql.Time;
 
 import java.sql.Date;
@@ -10,8 +12,15 @@ import java.sql.Date;
 public class NotificationObject {
 
     @Id
+    @GenericGenerator(
+            name = "assigned-identity",
+            strategy = "com.application.screener.screener_application.helpers.UseExistingOrGenerateIdGenerator"
+    )
+    @GeneratedValue(
+            generator = "assigned-identity",
+            strategy = GenerationType.SEQUENCE
+    )
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "entity_type_id")
